@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha de Almacén</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td {
+            border: 1px solid black;
+            text-align: center;
+        }
+
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        input {
+            border: 0px solid transparent;
+            width: 100%;
+            height: 30px;
+            text-align: center;
+        }
+
+        span.existencia_cantidad .existencia_cantidad .existencia_precio .existencia_valor {
+            font-size: 20px;
+            font-weight: 900;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2 style="text-align: center;">Ficha de Almacén</h2>
+
+    <table>
+        <tbody>
+            <tr>
+                <td colspan="8" style="text-align: left;">ARTICULO:<input type="text" id="articulo"
+                        style="width: 400px; text-align: left; margin-left: 10px;"><br>Código:<input type="text"
+                        id="codigo" style="width: 400px; text-align: left; margin-left: 10px;"></td>
+                <td colspan="3" style="text-align: left;">Método de valoración:<br><input type="text" id="metodo"
+                        style="width: 200px; text-align: left; margin-left: 10px;"></td>
+            </tr>
+            <tr>
+                <td rowspan="2">Fecha</td>
+                <td rowspan="2">Concepto</td>
+                <td colspan="3">Entradas</td>
+                <td colspan="3">Salidas</td>
+                <td colspan="3">Existencias</td>
+            </tr>
+            <tr>
+                <td>Cantidad</td>
+                <td>Precio</td>
+                <td>Valor</td>
+                <td>Cantidad</td>
+                <td>Precio</td>
+                <td>Valor</td>
+                <td>Cantidad</td>
+                <td>Precio</td>
+                <td>Valor</td>
+            </tr>
+            <!-- Filas de datos -->
+            <tr>
+                <td><input type="text" class="fecha"></td>
+                <td><input type="text" class="concepto"></td>
+                <td><input type="number" class="entrada_cantidad" oninput="calcularExistencias(this)"></td>
+                <td><input type="number" class="entrada_precio" oninput="calcularExistencias(this)"></td>
+                <td><span class="entrada_valor"></span></td>
+                <td><input type="number" class="salida_cantidad" oninput="calcularExistencias(this)"></td>
+                <td><input type="number" class="salida_precio" oninput="calcularExistencias(this)"></td>
+                <td><span class="salida_valor"></span></td>
+                <td><span class="existencia_cantidad"></span></td>
+                <td><span class="existencia_precio"></span></td>
+                <td><span class="existencia_valor"></span></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="fecha"></td>
+                <td><input type="text" class="concepto"></td>
+                <td><input type="number" class="entrada_cantidad" oninput="calcularExistencias(this)"></td>
+                <td><input type="number" class="entrada_precio" oninput="calcularExistencias(this)"></td>
+                <td><span class="entrada_valor"></span></td>
+                <td><input type="number" class="salida_cantidad" oninput="calcularExistencias(this)"></td>
+                <td><input type="number" class="salida_precio" oninput="calcularExistencias(this)"></td>
+                <td><span class="salida_valor"></span></td>
+                <td><span class="existencia_cantidad"></span></td>
+                <td><span class="existencia_precio"></span></td>
+                <td><span class="existencia_valor"></span></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="fecha"></td>
+                <td><input type="text" class="concepto"></td>
+                <td><input type="number" class="entrada_cantidad" oninput="calcularExistencias(this)"></td>
+                <td><input type="number" class="entrada_precio" oninput="calcularExistencias(this)"></td>
+                <td><span class="entrada_valor"></span></td>
+                <td><input type="number" class="salida_cantidad" oninput="calcularExistencias(this)"></td>
+                <td><input type="number" class="salida_precio" oninput="calcularExistencias(this)"></td>
+                <td><span class="salida_valor"></span></td>
+                <td><span class="existencia_cantidad"></span></td>
+                <td><span class="existencia_precio"></span></td>
+                <td><span class="existencia_valor"></span></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="fecha"></td>
+                <td><input type="text" class="concepto"></td>
+                <td><input type="number" class="entrada_cantidad" oninput="calcularExistencias(this)"></td>
+                <td><input type="number" class="entrada_precio" oninput="calcularExistencias(this)"></td>
+                <td><span class="entrada_valor"></span></td>
+                <td><input type="number" class="salida_cantidad" oninput="calcularExistencias(this)"></td>
+                <td><input type="number" class="salida_precio" oninput="calcularExistencias(this)"></td>
+                <td><span class="salida_valor"></span></td>
+                <td><span class="existencia_cantidad"></span></td>
+                <td><span class="existencia_precio"></span></td>
+                <td><span class="existencia_valor"></span></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="fecha"></td>
+                <td><input type="text" class="concepto"></td>
+                <td><input type="number" class="entrada_cantidad" oninput="calcularExistencias(this)"></td>
+                <td><input type="number" class="entrada_precio" oninput="calcularExistencias(this)"></td>
+                <td><span class="entrada_valor"></span></td>
+                <td><input type="number" class="salida_cantidad" oninput="calcularExistencias(this)"></td>
+                <td><input type="number" class="salida_precio" oninput="calcularExistencias(this)"></td>
+                <td><span class="salida_valor"></span></td>
+                <td><span class="existencia_cantidad"></span></td>
+                <td><span class="existencia_precio"></span></td>
+                <td><span class="existencia_valor"></span></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="fecha"></td>
+                <td><input type="text" class="concepto"></td>
+                <td><input type="number" class="entrada_cantidad" oninput="calcularExistencias(this)"></td>
+                <td><input type="number" class="entrada_precio" oninput="calcularExistencias(this)"></td>
+                <td><span class="entrada_valor"></span></td>
+                <td><input type="number" class="salida_cantidad" oninput="calcularExistencias(this)"></td>
+                <td><input type="number" class="salida_precio" oninput="calcularExistencias(this)"></td>
+                <td><span class="salida_valor"></span></td>
+                <td><span class="existencia_cantidad"></span></td>
+                <td><span class="existencia_precio"></span></td>
+                <td><span class="existencia_valor"></span></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="fecha"></td>
+                <td><input type="text" class="concepto"></td>
+                <td><input type="number" class="entrada_cantidad" oninput="calcularExistencias(this)"></td>
+                <td><input type="number" class="entrada_precio" oninput="calcularExistencias(this)"></td>
+                <td><span class="entrada_valor"></span></td>
+                <td><input type="number" class="salida_cantidad" oninput="calcularExistencias(this)"></td>
+                <td><input type="number" class="salida_precio" oninput="calcularExistencias(this)"></td>
+                <td><span class="salida_valor"></span></td>
+                <td><span class="existencia_cantidad"></span></td>
+                <td><span class="existencia_precio"></span></td>
+                <td><span class="existencia_valor"></span></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="fecha"></td>
+                <td><input type="text" class="concepto"></td>
+                <td><input type="number" class="entrada_cantidad" oninput="calcularExistencias(this)"></td>
+                <td><input type="number" class="entrada_precio" oninput="calcularExistencias(this)"></td>
+                <td><span class="entrada_valor"></span></td>
+                <td><input type="number" class="salida_cantidad" oninput="calcularExistencias(this)"></td>
+                <td><input type="number" class="salida_precio" oninput="calcularExistencias(this)"></td>
+                <td><span class="salida_valor"></span></td>
+                <td><span class="existencia_cantidad"></span></td>
+                <td><span class="existencia_precio"></span></td>
+                <td><span class="existencia_valor"></span></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="fecha"></td>
+                <td><input type="text" class="concepto"></td>
+                <td><input type="number" class="entrada_cantidad" oninput="calcularExistencias(this)"></td>
+                <td><input type="number" class="entrada_precio" oninput="calcularExistencias(this)"></td>
+                <td><span class="entrada_valor"></span></td>
+                <td><input type="number" class="salida_cantidad" oninput="calcularExistencias(this)"></td>
+                <td><input type="number" class="salida_precio" oninput="calcularExistencias(this)"></td>
+                <td><span class="salida_valor"></span></td>
+                <td><span class="existencia_cantidad"></span></td>
+                <td><span class="existencia_precio"></span></td>
+                <td><span class="existencia_valor"></span></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="fecha"></td>
+                <td><input type="text" class="concepto"></td>
+                <td><input type="number" class="entrada_cantidad" oninput="calcularExistencias(this)"></td>
+                <td><input type="number" class="entrada_precio" oninput="calcularExistencias(this)"></td>
+                <td><span class="entrada_valor"></span></td>
+                <td><input type="number" class="salida_cantidad" oninput="calcularExistencias(this)"></td>
+                <td><input type="number" class="salida_precio" oninput="calcularExistencias(this)"></td>
+                <td><span class="salida_valor"></span></td>
+                <td><span class="existencia_cantidad"></span></td>
+                <td><span class="existencia_precio"></span></td>
+                <td><span class="existencia_valor"></span></td>
+            </tr>
+        </tbody>
+    </table>
+    <button onclick="resetCampos()">Reset</button>
+    <!-- Botón para calcular ganancias y gastos -->
+    <button onclick="calcularGananciasYGastos()">Calcular Ganancias y Gastos</button>
+
+    <div>
+        Ganancias totales: <span id="gananciasTotales"></span>
+    </div>
+    <div>
+        Gastos totales: <span id="gastosTotales"></span>
+    </div>
+    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            cargarDatosGuardados();
+        });
+
+        function calcularExistencias(input) {
+            var fila = input.parentNode.parentNode;
+            actualizarExistencias(fila);
+            guardarDatos();
+        }
+
+        function actualizarExistencias(fila) {
+    var existenciaCantidadElement = fila.querySelector('.existencia_cantidad');
+    var existenciaPrecioElement = fila.querySelector('.existencia_precio');
+    var existenciaValorElement = fila.querySelector('.existencia_valor');
+    var entradaValorElement = fila.querySelector('.entrada_valor'); // Nuevo
+    var salidaValorElement = fila.querySelector('.salida_valor'); // Nuevo
+
+    if (!existenciaCantidadElement || !existenciaPrecioElement || !existenciaValorElement || !entradaValorElement || !salidaValorElement) {
+        return; // Salir si no se encuentran los elementos necesarios
+    }
+
+    var existenciasAnteriores = 0;
+    var existenciasPrecioAnterior = 0;
+    var filasAnteriores = fila.previousElementSibling;
+
+    if (filasAnteriores && filasAnteriores.querySelector('.existencia_cantidad') && filasAnteriores.querySelector('.existencia_precio')) {
+        existenciasAnteriores = parseFloat(filasAnteriores.querySelector('.existencia_cantidad').innerText) || 0;
+        existenciasPrecioAnterior = parseFloat(filasAnteriores.querySelector('.existencia_precio').innerText) || 0;
+    }
+
+    var entradasCantidad = parseFloat(fila.querySelector('.entrada_cantidad').value) || 0;
+    var entradasPrecio = parseFloat(fila.querySelector('.entrada_precio').value) || 0;
+    var salidasCantidad = parseFloat(fila.querySelector('.salida_cantidad').value) || 0;
+    var salidasPrecio = parseFloat(fila.querySelector('.salida_precio').value) || 0;
+
+    // Calcular el valor total de las entradas y salidas
+    var valorEntradas = entradasCantidad * entradasPrecio;
+    var valorSalidas = salidasCantidad * salidasPrecio;
+
+    // Calcular las existencias actuales
+    var existenciasCantidad;
+    var existenciasPrecio;
+    var existenciasValor;
+
+    if (entradasCantidad > 0) {
+        existenciasCantidad = existenciasAnteriores + entradasCantidad;
+        existenciasPrecio = entradasPrecio;
+        existenciasValor = existenciasCantidad * existenciasPrecio;
+    } else if (salidasCantidad > 0) {
+        existenciasCantidad = existenciasAnteriores - salidasCantidad;
+        existenciasPrecio = (existenciasAnteriores > 0) ? existenciasPrecioAnterior : salidasPrecio;
+        existenciasValor = existenciasCantidad * existenciasPrecio;
+    } else {
+        existenciasCantidad = existenciasAnteriores;
+        existenciasPrecio = existenciasPrecioAnterior;
+        existenciasValor = existenciasCantidad * existenciasPrecio;
+    }
+
+    // Actualizar el precio de existencia si el precio de entrada cambia
+    if (entradasPrecio !== 0 && existenciasAnteriores !== 0) {
+        existenciasPrecio = ((existenciasAnteriores * existenciasPrecioAnterior) + (entradasCantidad * entradasPrecio)) / (existenciasAnteriores + entradasCantidad);
+        existenciasValor = existenciasCantidad * existenciasPrecio;
+    }
+
+    // Mostrar los resultados en la fila actual
+    existenciaCantidadElement.innerText = (existenciasCantidad > 0.01) ? ((existenciasCantidad % 1 === 0) ? existenciasCantidad.toFixed(0) : existenciasCantidad.toFixed(2)) : '';
+    existenciaPrecioElement.innerText = (existenciasPrecio > 0.01) ? ((existenciasPrecio % 1 === 0) ? existenciasPrecio.toFixed(0) : existenciasPrecio.toFixed(2)) : '';
+    existenciaValorElement.innerText = (existenciasValor > 0.01) ? ((existenciasValor % 1 === 0) ? existenciasValor.toFixed(0) : existenciasValor.toFixed(2)) : '';
+    entradaValorElement.innerText = (valorEntradas > 0.01) ? ((valorEntradas % 1 === 0) ? valorEntradas.toFixed(0) : valorEntradas.toFixed(2)) : ''; // Nuevo
+    salidaValorElement.innerText = (valorSalidas > 0.01) ? ((valorSalidas % 1 === 0) ? valorSalidas.toFixed(0) : valorSalidas.toFixed(2)) : ''; // Nuevo
+}
+
+
+        function resetCampos() {
+            var inputs = document.querySelectorAll('input[type="text"], input[type="number"]');
+            inputs.forEach(function (input) {
+                input.value = '';
+            });
+            // Resetear también los valores calculados
+            var spans = document.querySelectorAll('.entrada_valor, .salida_valor, .existencia_cantidad, .existencia_precio, .existencia_valor');
+            spans.forEach(function (span) {
+                span.innerText = '';
+            });
+            // Limpiar el almacenamiento local
+            localStorage.removeItem('datosAlmacenados');
+        }
+
+        function guardarDatos() {
+            var filas = document.querySelectorAll('tr');
+            var datos = [];
+            filas.forEach(function (fila, index) {
+                if (index > 0) { // Ignorar la primera fila (encabezados)
+                    var filaData = [];
+                    fila.querySelectorAll('td').forEach(function (celda, celdaIndex) {
+                        var input = celda.querySelector('input');
+                        if (input) {
+                            filaData.push(input.value); // Obtener el valor del input
+                        } else {
+                            filaData.push(celda.innerText);
+                        }
+                    });
+                    datos.push(filaData);
+                }
+            });
+            localStorage.setItem('datosAlmacenados', JSON.stringify(datos));
+        }
+
+        function cargarDatosGuardados() {
+            var datosGuardados = localStorage.getItem('datosAlmacenados');
+            if (datosGuardados) {
+                var filas = JSON.parse(datosGuardados);
+                filas.forEach(function (filaData, index) {
+                    var fila = document.querySelectorAll('tr')[index + 1];
+                    if (fila) {
+                        var inputs = fila.querySelectorAll('input');
+                        var entradasIndex = 2;
+                        var salidasIndex = 4;
+                        filaData.forEach(function (valor, celdaIndex) {
+                            if (celdaIndex >= 2 && celdaIndex < 5 && inputs[entradasIndex]) {
+                                inputs[entradasIndex].value = valor;
+                                entradasIndex++;
+                            } else if (celdaIndex >= 5 && inputs[salidasIndex]) {
+                                inputs[salidasIndex].value = valor;
+                                salidasIndex++;
+                            }
+                        });
+                        // Calcular existencias para la fila después de establecer los valores
+                        actualizarExistencias(fila);
+                    }
+                });
+            }
+        }
+
+        function calcularGananciasYGastos() {
+    var filas = document.querySelectorAll('tr');
+    var gananciasTotales = 0;
+    var gastosTotales = 0;
+
+    filas.forEach(function (fila, index) {
+        if (index > 0) { // Ignorar la primera fila (encabezados)
+            var inputs = fila.querySelectorAll('input');
+            if (inputs.length >= 6) {
+                var entradasCantidad = parseFloat(inputs[2].value) || 0;
+                var entradasPrecio = parseFloat(inputs[3].value) || 0;
+                var salidasCantidad = parseFloat(inputs[4].value) || 0;
+                var salidasPrecio = parseFloat(inputs[5].value) || 0;
+
+                // Calcular valor total de las entradas y las salidas
+                var valorEntradas = entradasCantidad * entradasPrecio;
+                var valorSalidas = salidasCantidad * salidasPrecio;
+
+                gananciasTotales += valorEntradas;
+                gastosTotales += valorSalidas;
+            }
+        }
+    });
+
+    // Mostrar ganancias totales y gastos totales fuera de la tabla
+    var gananciasElement = document.getElementById('gananciasTotales');
+    var gastosElement = document.getElementById('gastosTotales');
+
+    if (gananciasElement) {
+        gananciasElement.innerText = gananciasTotales.toFixed(2);
+    }
+
+    if (gastosElement) {
+        gastosElement.innerText = gastosTotales.toFixed(2);
+    }
+}
+
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>
