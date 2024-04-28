@@ -1,2 +1,2 @@
 # fichaDeAlmacen
-https://github.com/xdgtweb/fichaDeAlmacen/index.html
+[link](https://xdgtweb.github.io/fichaDeAlmacen/index.html)
